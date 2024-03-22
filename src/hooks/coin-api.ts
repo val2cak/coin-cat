@@ -11,10 +11,10 @@ export const coinApiSlice = createApi({
   keepUnusedDataFor: 0,
   endpoints(builder) {
     return {
-      getCoins: builder.query<Coin[], { userInput?: string }>({
-        query: ({ userInput }) => {
+      getCoins: builder.query<Coin[], string>({
+        query: (userInput: string) => {
           const queryParams = new URLSearchParams();
-          if (userInput) {
+          if (userInput && userInput.trim() !== '') {
             queryParams.append('query', encodeURI(userInput));
           }
           const queryString = queryParams.toString();

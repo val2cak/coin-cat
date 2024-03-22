@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Card: FC<Props> = ({ item }) => {
-  const { name, small, symbol, data, market_cap_rank, coin_id } = item;
+  const { name, small, thumb, symbol, data, market_cap_rank, coin_id } = item;
 
   const [favorite, setFavorite] = useState<boolean>(false);
 
@@ -45,7 +45,7 @@ const Card: FC<Props> = ({ item }) => {
     <div className='rounded-xl border border-light border-opacity-5 bg-primary flex-1'>
       <div className='p-5 flex items-center justify-between h-1/2'>
         <div className='flex items-center gap-3'>
-          <img src={small} alt={name} />
+          <img src={small ?? thumb} alt={name} className='w-12 h-12' />
           <span className='font-semibold text-base'>{symbol}</span>
           <span className='bg-gray rounded text-xs text-primary px-1.5 py-0.5 uppercase font-semibold'>
             {name}

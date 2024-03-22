@@ -2,9 +2,8 @@ import { useGetCoinsQuery } from '../../../hooks/coin-api';
 import Card from '../../../components/card/card';
 
 const TrendingCards = () => {
-  const { data: coinsData, isLoading: isCoinsDataLoading } = useGetCoinsQuery(
-    {}
-  );
+  const { data: coinsData, isLoading: isCoinsDataLoading } =
+    useGetCoinsQuery('');
 
   return (
     <>
