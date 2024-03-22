@@ -7,17 +7,17 @@ import NotFoundContainer from '../features/not-found/not-found-container';
 
 export let Routes: CustomRouteObject[] = [
   {
-    path: '/',
+    path: '',
     name: 'Dashboard',
     element: <Outlet />,
     children: [
       {
-        path: '',
+        path: '/',
         name: 'Home',
         element: <HomeContainer />,
       },
       {
-        path: 'favorites',
+        path: '/favorites',
         name: 'Favorites',
         element: <FavoritesContainer />,
       },

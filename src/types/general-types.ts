@@ -4,3 +4,9 @@ export interface CustomRouteObject extends NonIndexRouteObject {
   name: string;
   children?: CustomRouteObject[];
 }
+
+export interface Navigation {
+  id: number;
+  text: string;
+  link: string;
+}
