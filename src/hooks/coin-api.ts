@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-import { Coin } from '../types/coin-types';
+import { Coin, CoinResponse } from '../types/coin-types';
 
 export const coinApiSlice = createApi({
   reducerPath: 'Coin-Api-Slice',
@@ -12,20 +11,19 @@ export const coinApiSlice = createApi({
   keepUnusedDataFor: 0,
   endpoints(builder) {
     return {
-      getCoins: builder.query<
-        Coin[],
-        {
-          userInput?: string;
-        }
-      >({
+      getCoins: builder.query<Coin[], { userInput?: string }>({
         query: ({ userInput }) => {
           const queryParams = new URLSearchParams();
           if (userInput) {
             queryParams.append('query', encodeURI(userInput));
           }
           const queryString = queryParams.toString();
-          const encodedQueryString = queryString ? queryString : '';
-          return encodedQueryString ? `?${encodedQueryString}` : `/trending`;
+          const encodedQueryString = queryString ? `?${queryString}` : '';
+          return encodedQueryString ? encodedQueryString : '/trending';
+        },
+        transformResponse: (response: CoinResponse) => {
+          const transformedResponse = response.coins.map((coin) => coin.item);
+          return transformedResponse;
         },
         providesTags: ['Coins-List'],
       }),

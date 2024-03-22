@@ -30,9 +30,11 @@ module.exports = {
       },
 
       colors: {
-        primary: '#1d1429',
-        secondary: '#0fae96',
-        light: '#ecf1f0',
+        primary: '#1D1429',
+        secondary: '#0FAE96',
+        tertiary: '#B682BD',
+        light: '#ECF1F0',
+        gray: '#B6B6B6',
       },
       backgroundImage: () => ({}),
       lineHeight: {
@@ -46,9 +48,9 @@ module.exports = {
         10: '4.0rem',
       },
       fontSize: {
-        xs: ['12px', { lineHeight: '1.6rem' }],
-        sm: ['16px', { lineHeight: '2.0rem' }],
-        base: ['20px', { lineHeight: '2.0rem' }],
+        xs: ['10px', { lineHeight: '1.6rem' }],
+        sm: ['12px', { lineHeight: '2.0rem' }],
+        base: ['16px', { lineHeight: '2.0rem' }],
         md: ['24px', { lineHeight: '2.4rem' }],
         lg: ['32px', { lineHeight: '2.8rem' }],
         xl: ['36px', { lineHeight: '2.8rem' }],

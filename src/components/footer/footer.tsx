@@ -20,7 +20,7 @@ const Footer = () => {
         {Routes?.find((item) => item.name === 'Dashboard').children?.map(
           (route, index) => (
             <Fragment key={index}>
-              <li className='text-sm font-normal'>
+              <li className='text-base font-normal'>
                 <Link to={route.path} className='hover:text-secondary'>
                   {route.name}
                 </Link>

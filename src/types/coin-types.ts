@@ -1,4 +1,5 @@
 export interface Coin {
+  coin_id: number;
   small: string;
   name: string;
   symbol: string;
@@ -6,5 +7,12 @@ export interface Coin {
   data: {
     price: string;
   };
-  favorite?: boolean;
+}
+
+export interface CoinItem {
+  item: Coin;
+}
+
+export interface CoinResponse {
+  coins: CoinItem[];
 }

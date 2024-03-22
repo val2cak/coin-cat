@@ -8,7 +8,7 @@ const Links = () => {
       {Routes?.find((item) => item.name === 'Dashboard').children?.map(
         (route, index) => (
           <Fragment key={index}>
-            <li className='uppercase text-sm tracking-wider'>
+            <li className='uppercase text-base tracking-wider'>
               <NavLink
                 to={route.path}
                 className={({ isActive }) =>
