@@ -1,5 +1,10 @@
+import { useRoutes } from 'react-router-dom';
+import { Routes } from './routes/Routes';
+
 const App = () => {
-  return <div className='h-screen'></div>;
+  const prepareRoutes = useRoutes(Routes);
+
+  return <div className='h-screen'>{prepareRoutes}</div>;
 };
 
 export default App;
