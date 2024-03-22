@@ -1,9 +1,7 @@
-import React from 'react';
+import Layout from '../layout';
 
-type Props = {};
-
-const HomeContainer = (props: Props) => {
-  return <div>HomeContainer</div>;
+const HomeContainer = () => {
+  return <Layout>Home</Layout>;
 };
 
 export default HomeContainer;

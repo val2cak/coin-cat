@@ -1,14 +1,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
-import { cryptoApiSlice } from '../hooks/crypto-api';
+import { coinApiSlice } from '../hooks/coin-api';
 
 export const store = configureStore({
   reducer: {
-    [cryptoApiSlice.reducerPath]: cryptoApiSlice.reducer,
+    [coinApiSlice.reducerPath]: coinApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(
-      cryptoApiSlice.middleware
+      coinApiSlice.middleware
     ),
 });
 

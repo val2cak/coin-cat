@@ -1,9 +1,7 @@
-import React from 'react';
+import Layout from '../layout';
 
-type Props = {};
-
-const FavoritesContainer = (props: Props) => {
-  return <div>FavoritesContainer</div>;
+const FavoritesContainer = () => {
+  return <Layout>FavoritesContainer</Layout>;
 };
 
 export default FavoritesContainer;
