@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center gap-8'>
+    <div className='flex flex-col justify-center items-center gap-8 pt-24'>
       <div className='flex flex-col gap-2 items-center'>
         <span className='text-xl uppercase font-bold'>{title}</span>
         <span className='text-base font-medium text-tertiary'>{subtitle}</span>

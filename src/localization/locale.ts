@@ -20,7 +20,10 @@ const locale = {
     button: 'Get started',
     tableHeader: 'Explore the market',
   },
-  favorites: {},
+  favorites: {
+    tableHeader: 'Your crypto favorites',
+    recommendedHeader: 'Recommended for you',
+  },
 };
 
 export default locale;
