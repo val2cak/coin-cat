@@ -12,7 +12,11 @@ interface Props {
 
 const StarButton: FC<Props> = ({ favorite, handleOnClick, size }) => {
   return (
-    <button onClick={handleOnClick} type={'button'} className='hover:scale-105'>
+    <button
+      onClick={handleOnClick}
+      type={'button'}
+      className='hover:scale-105 align-middle'
+    >
       {favorite ? (
         <FullStarIcon className={`${size} text-secondary`} />
       ) : (
