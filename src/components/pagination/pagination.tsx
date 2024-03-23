@@ -40,7 +40,7 @@ const Pagination: FC<Props> = ({ pagination }) => {
           <button
             key={index + 1}
             onClick={() => pagination.setPageIndex(index)}
-            className={`px-4 py-1 font-bold ${
+            className={`px-4 py-1 lining-nums font-bold ${
               index === pagination.getState().pagination.pageIndex
                 ? 'bg-secondary text-light rounded-full'
                 : 'hover:text-secondary'

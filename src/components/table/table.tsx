@@ -154,7 +154,10 @@ const Table: FC<Props> = ({ data }) => {
               className='bg-primary border-b border-b-light border-opacity-5'
             >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className='px-8 py-4 font-normal text-base'>
+                <td
+                  key={cell.id}
+                  className='px-8 py-4 font-normal text-base lining-nums'
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

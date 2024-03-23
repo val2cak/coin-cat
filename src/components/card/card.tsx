@@ -24,8 +24,10 @@ const Card: FC<Props> = ({ item }) => {
       </div>
       <div className='border border-light border-opacity-5'></div>
       <div className='p-5 flex flex-col items-start justify-between h-1/2'>
-        <span className='text-md font-medium'>{data.price}</span>
-        <span className='text-base font-medium'>{market_cap_rank}</span>
+        <span className='text-md font-medium lining-nums'>{data.price}</span>
+        <span className='text-base font-medium lining-nums'>
+          {market_cap_rank}
+        </span>
       </div>
     </div>
   );
