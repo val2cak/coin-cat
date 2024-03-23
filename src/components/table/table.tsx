@@ -1,31 +1,54 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  SortingState,
   useReactTable,
 } from '@tanstack/react-table';
+import {
+  IoIosArrowUp as ArrowUpIcon,
+  IoIosArrowDown as ArrowDownIcon,
+} from 'react-icons/io';
 
 import { Coin } from '../../types/coin-types';
 import FavoriteCell from '../favorite-cell/favorite-cell';
 import { formatPrice } from '../../utils/format-price';
+import Pagination from '../pagination/pagination';
+import locale from '../../localization/locale';
 
 interface Props {
   data: Coin[];
 }
 
 const Table: FC<Props> = ({ data }) => {
+  const {
+    sortAsc,
+    sortDesc,
+    clearSort,
+    no,
+    name,
+    symbol,
+    logo,
+    marketCapRank,
+    price,
+  } = locale.common;
+
+  const [sorting, setSorting] = useState<SortingState>([]);
+
   const columnHelper = createColumnHelper<Coin>();
 
   const columns = [
     {
       id: 'index',
-      header: 'No',
+      header: no,
       cell: (info) => info.row.index + 1,
     },
     {
       id: 'image',
-      header: 'Logo',
+      header: logo,
       cell: (info) => (
         <>
           {(info.row.original.small || info.row.original.thumb) && (
@@ -39,19 +62,19 @@ const Table: FC<Props> = ({ data }) => {
       ),
     },
     columnHelper.accessor('name', {
-      header: 'Name',
+      header: name,
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor('symbol', {
-      header: 'Symbol',
+      header: symbol,
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor('data.price', {
-      header: 'Price',
+      header: price,
       cell: (info) => formatPrice(info.getValue()),
     }),
     columnHelper.accessor('market_cap_rank', {
-      header: 'Market cap rank',
+      header: marketCapRank,
       cell: (info) => info.getValue(),
     }),
     {
@@ -67,6 +90,18 @@ const Table: FC<Props> = ({ data }) => {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    state: {
+      sorting,
+    },
+    initialState: {
+      pagination: {
+        pageIndex: 0,
+        pageSize: 20,
+      },
+    },
   });
 
   return (
@@ -81,14 +116,32 @@ const Table: FC<Props> = ({ data }) => {
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className='px-8 py-4 uppercase font-medium text-base text-tertiary text-left'
+                  className={`px-8 py-4 uppercase font-medium text-base text-tertiary text-left ${
+                    header.column.getCanSort() && 'hover:cursor-pointer'
+                  }`}
+                  onClick={header.column.getToggleSortingHandler()}
+                  title={
+                    header.column.getCanSort()
+                      ? header.column.getNextSortingOrder() === 'asc'
+                        ? sortAsc
+                        : header.column.getNextSortingOrder() === 'desc'
+                        ? sortDesc
+                        : clearSort
+                      : undefined
+                  }
                 >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                  <div className='flex items-center gap-2'>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                    {{
+                      asc: <ArrowUpIcon />,
+                      desc: <ArrowDownIcon />,
+                    }[header.column.getIsSorted() as string] ?? null}
+                  </div>
                 </th>
               ))}
             </tr>
@@ -109,6 +162,7 @@ const Table: FC<Props> = ({ data }) => {
           ))}
         </tbody>
       </table>
+      <Pagination pagination={table} />
     </div>
   );
 };
