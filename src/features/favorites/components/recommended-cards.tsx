@@ -1,27 +1,29 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { useGetCoinsQuery } from '../../../hooks/coin-api';
 import Card from '../../../components/card/card';
 import locale from '../../../localization/locale';
 import { Coin } from '../../../types/coin-types';
-import { getFavoritesFromStorage } from '../../../services/storage';
+import { selectFavorites } from '../../../hooks/favorites-state';
 
 const RecommendedCards = () => {
   const { recommendedHeader } = locale.favorites;
+  const favorites = useSelector(selectFavorites);
+
   const [recommendedData, setRecommendedData] = useState<Coin[]>([]);
 
   const { data: coinsData, isLoading: isCoinsDataLoading } =
     useGetCoinsQuery('');
 
   useEffect(() => {
-    const favoritesFromStorage = getFavoritesFromStorage();
-    if (favoritesFromStorage) {
-      const favorites = JSON.parse(favoritesFromStorage);
-      setRecommendedData(
-        coinsData?.filter((coin) => !favorites.includes(coin.id))
+    if (coinsData) {
+      const filteredRecommended = coinsData.filter(
+        (coin) => !favorites.includes(coin.id)
       );
+      setRecommendedData(filteredRecommended);
     }
-  }, [coinsData]);
+  }, [coinsData, favorites]);
 
   return (
     <div className='flex flex-col gap-8'>

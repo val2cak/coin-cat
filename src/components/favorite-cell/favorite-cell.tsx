@@ -1,11 +1,10 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { RootState } from '../../app/store';
 import StarButton from '../star-button/star-button';
 import { Coin } from '../../types/coin-types';
-import {
-  getFavoritesFromStorage,
-  setFavoritesToStorage,
-} from '../../services/storage';
+import { addFavorite, removeFavorite } from '../../hooks/favorites-state';
 
 interface Props {
   item: Coin;
@@ -14,37 +13,23 @@ interface Props {
 
 const FavoriteCell: FC<Props> = ({ item, size }) => {
   const { id } = item;
-
-  const [favorite, setFavorite] = useState<boolean>(false);
-
-  useEffect(() => {
-    const favoritesFromStorage = getFavoritesFromStorage();
-    if (favoritesFromStorage) {
-      const favorites = JSON.parse(favoritesFromStorage);
-      setFavorite(favorites.includes(id));
-    }
-  }, [id]);
+  const dispatch = useDispatch();
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.favorites
+  );
+  const isFavorite = favorites.includes(id);
 
   const handleFavorite = () => {
-    const favoritesFromStorage = getFavoritesFromStorage();
-    let favorites: string[] = favoritesFromStorage
-      ? JSON.parse(favoritesFromStorage)
-      : [];
-
-    if (favorite) {
-      favorites = favorites.filter((itemId) => itemId !== id);
+    if (isFavorite) {
+      dispatch(removeFavorite(id));
     } else {
-      favorites.push(id);
+      dispatch(addFavorite(id));
     }
-
-    setFavoritesToStorage(favorites);
-
-    setFavorite(!favorite);
   };
 
   return (
     <StarButton
-      favorite={favorite}
+      favorite={isFavorite}
       size={size}
       handleOnClick={handleFavorite}
     />
