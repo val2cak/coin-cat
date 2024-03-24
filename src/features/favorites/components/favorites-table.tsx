@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import debounce from 'lodash/debounce';
+import { useSelector } from 'react-redux';
 
 import { useLazyGetCoinsQuery } from '../../../hooks/coin-api';
 import Table from '../../../components/table/table';
 import locale from '../../../localization/locale';
-import { getFavoritesFromStorage } from '../../../services/storage';
-import { Coin } from '../../../types/coin-types';
 import SearchInput from '../../../components/search-input/search-input';
+import { Coin } from '../../../types/coin-types';
+import { selectFavorites } from '../../../hooks/favorites-state';
 
 const FavoritesTable = () => {
   const { tableHeader } = locale.favorites;
+  const favorites = useSelector(selectFavorites);
 
   const [userInput, setUserInput] = useState<string>('');
   const [favoritesData, setFavoritesData] = useState<Coin[]>([]);
@@ -26,14 +28,13 @@ const FavoritesTable = () => {
   }, [userInput]);
 
   useEffect(() => {
-    const favoritesFromStorage = getFavoritesFromStorage();
-    if (favoritesFromStorage) {
-      const favorites = JSON.parse(favoritesFromStorage);
-      setFavoritesData(
-        coinsData?.filter((coin) => favorites.includes(coin.id))
+    if (coinsData) {
+      const filteredFavorites = coinsData.filter((coin) =>
+        favorites.includes(coin.id)
       );
+      setFavoritesData(filteredFavorites);
     }
-  }, [coinsData]);
+  }, [coinsData, favorites]);
 
   const handleSearch = (query) => {
     setUserInput(query);
