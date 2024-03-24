@@ -41,8 +41,10 @@ const FavoritesTable = () => {
 
   return (
     <div id='market-table' className='flex flex-col gap-8 pt-8'>
-      <div className='flex justify-between items-center'>
-        <div className='uppercase font-bold text-lg'>{tableHeader}</div>
+      <div className='flex justify-between items-center sm:flex-col sm:items-start gap-4'>
+        <div className='uppercase font-bold sm:text-md text-lg'>
+          {tableHeader}
+        </div>
         <SearchInput onSearch={handleSearch} />
       </div>
       {!isCoinsDataFetching && favoritesData && favoritesData.length !== 0 && (

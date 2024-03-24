@@ -8,7 +8,7 @@ const TrendingCards = () => {
   return (
     <>
       {!isCoinsDataLoading && (
-        <div className='flex flex-row justify-center gap-8'>
+        <div className='flex flex-row justify-center gap-8 flex-wrap'>
           {coinsData?.slice(0, 4)?.map((item, index) => (
             <Card item={item} key={index} />
           ))}

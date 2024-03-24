@@ -25,9 +25,11 @@ const RecommendedCards = () => {
 
   return (
     <div className='flex flex-col gap-8'>
-      <div className='uppercase font-bold text-lg'>{recommendedHeader}</div>
+      <div className='uppercase font-bold sm:text-md text-lg'>
+        {recommendedHeader}
+      </div>
       {!isCoinsDataLoading && (
-        <div className='flex flex-row justify-center gap-8'>
+        <div className='flex flex-row justify-center gap-8 sm:flex-wrap'>
           {recommendedData?.slice(0, 4)?.map((item, index) => (
             <Card item={item} key={index} />
           ))}
