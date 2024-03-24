@@ -4,6 +4,7 @@ import debounce from 'lodash/debounce';
 import { useLazyGetCoinsQuery } from '../../../hooks/coin-api';
 import Table from '../../../components/table/table';
 import locale from '../../../localization/locale';
+import SearchInput from '../../../components/search-input/search-input';
 
 const MarketTable = () => {
   const { tableHeader } = locale.home;
@@ -17,13 +18,19 @@ const MarketTable = () => {
 
   useEffect(() => {
     debouncedGetCoins(userInput);
-
     return () => debouncedGetCoins.cancel();
   }, [userInput]);
 
+  const handleSearch = (query) => {
+    setUserInput(query);
+  };
+
   return (
     <div id='market-table' className='flex flex-col gap-8'>
-      <div className='uppercase font-bold text-lg'>{tableHeader}</div>
+      <div className='flex justify-between items-center'>
+        <div className='uppercase font-bold text-lg'>{tableHeader}</div>
+        <SearchInput onSearch={handleSearch} />
+      </div>
       {!isCoinsDataFetching && coinsData && coinsData.length !== 0 && (
         <Table data={coinsData} />
       )}

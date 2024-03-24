@@ -22,8 +22,17 @@ export const coinApiSlice = createApi({
           return encodedQueryString ? encodedQueryString : '/trending';
         },
         transformResponse: (response: CoinResponse) => {
-          const transformedResponse = response.coins.map((coin) => coin.item);
-          return transformedResponse;
+          if (
+            response.coins &&
+            response.coins.length > 0 &&
+            'item' in response.coins[0]
+          ) {
+            const transformedResponse = response.coins.map((coin) => coin.item);
+            return transformedResponse;
+          } else {
+            const transformedResponse = response.coins;
+            return transformedResponse;
+          }
         },
         providesTags: ['Coins-List'],
       }),

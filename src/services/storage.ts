@@ -2,7 +2,7 @@ export function getFavoritesFromStorage(): string | null {
   return localStorage.getItem('favorites');
 }
 
-export function setFavoritesToStorage(favorites: number[]): void {
+export function setFavoritesToStorage(favorites: string[]): void {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 

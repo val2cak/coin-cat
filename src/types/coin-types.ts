@@ -1,12 +1,12 @@
 export interface Coin {
-  coin_id: number;
+  id: string;
   small: string;
   thumb: string;
   name: string;
   symbol: string;
   market_cap_rank: number;
-  data: {
-    price: string;
+  data?: {
+    price?: string;
   };
 }
 
@@ -15,5 +15,5 @@ export interface CoinItem {
 }
 
 export interface CoinResponse {
-  coins: CoinItem[];
+  coins: CoinItem[] | Coin[];
 }

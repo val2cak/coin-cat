@@ -13,7 +13,7 @@ interface Props {
 }
 
 const FavoriteCell: FC<Props> = ({ item, size }) => {
-  const { coin_id } = item;
+  const { id } = item;
 
   const [favorite, setFavorite] = useState<boolean>(false);
 
@@ -21,20 +21,20 @@ const FavoriteCell: FC<Props> = ({ item, size }) => {
     const favoritesFromStorage = getFavoritesFromStorage();
     if (favoritesFromStorage) {
       const favorites = JSON.parse(favoritesFromStorage);
-      setFavorite(favorites.includes(coin_id));
+      setFavorite(favorites.includes(id));
     }
-  }, [coin_id]);
+  }, [id]);
 
   const handleFavorite = () => {
     const favoritesFromStorage = getFavoritesFromStorage();
-    let favorites: number[] = favoritesFromStorage
+    let favorites: string[] = favoritesFromStorage
       ? JSON.parse(favoritesFromStorage)
       : [];
 
     if (favorite) {
-      favorites = favorites.filter((id) => id !== coin_id);
+      favorites = favorites.filter((itemId) => itemId !== id);
     } else {
-      favorites.push(coin_id);
+      favorites.push(id);
     }
 
     setFavoritesToStorage(favorites);

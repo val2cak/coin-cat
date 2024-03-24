@@ -51,13 +51,14 @@ const Table: FC<Props> = ({ data }) => {
       header: logo,
       cell: (info) => (
         <>
-          {(info.row.original.small || info.row.original.thumb) && (
-            <img
-              src={info.row.original.small ?? info.row.original.thumb}
-              alt={info.row.original.name}
-              className='w-8 h-8'
-            />
-          )}
+          {info.row.original &&
+            (info.row.original.small || info.row.original.thumb) && (
+              <img
+                src={info.row.original.small ?? info.row.original.thumb}
+                alt={info.row.original.name}
+                className='w-8 h-8'
+              />
+            )}
         </>
       ),
     },
@@ -69,10 +70,11 @@ const Table: FC<Props> = ({ data }) => {
       header: symbol,
       cell: (info) => info.getValue(),
     }),
-    columnHelper.accessor('data.price', {
-      header: price,
-      cell: (info) => formatPrice(info.getValue()),
-    }),
+    data.some((coin) => coin.data) &&
+      columnHelper.accessor('data.price', {
+        header: price,
+        cell: (info) => formatPrice(info.getValue()),
+      }),
     columnHelper.accessor('market_cap_rank', {
       header: marketCapRank,
       cell: (info) => info.getValue(),
@@ -84,7 +86,7 @@ const Table: FC<Props> = ({ data }) => {
         <FavoriteCell item={info.row.original} size={'text-md'} />
       ),
     },
-  ];
+  ].filter(Boolean);
 
   const table = useReactTable({
     data,

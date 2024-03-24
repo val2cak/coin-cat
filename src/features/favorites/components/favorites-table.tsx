@@ -6,6 +6,7 @@ import Table from '../../../components/table/table';
 import locale from '../../../localization/locale';
 import { getFavoritesFromStorage } from '../../../services/storage';
 import { Coin } from '../../../types/coin-types';
+import SearchInput from '../../../components/search-input/search-input';
 
 const FavoritesTable = () => {
   const { tableHeader } = locale.favorites;
@@ -29,14 +30,21 @@ const FavoritesTable = () => {
     if (favoritesFromStorage) {
       const favorites = JSON.parse(favoritesFromStorage);
       setFavoritesData(
-        coinsData?.filter((coin) => favorites.includes(coin.coin_id))
+        coinsData?.filter((coin) => favorites.includes(coin.id))
       );
     }
   }, [coinsData]);
 
+  const handleSearch = (query) => {
+    setUserInput(query);
+  };
+
   return (
     <div id='market-table' className='flex flex-col gap-8 pt-8'>
-      <div className='uppercase font-bold text-lg'>{tableHeader}</div>
+      <div className='flex justify-between items-center'>
+        <div className='uppercase font-bold text-lg'>{tableHeader}</div>
+        <SearchInput onSearch={handleSearch} />
+      </div>
       {!isCoinsDataFetching && favoritesData && favoritesData.length !== 0 && (
         <Table data={favoritesData} />
       )}

@@ -18,7 +18,7 @@ const RecommendedCards = () => {
     if (favoritesFromStorage) {
       const favorites = JSON.parse(favoritesFromStorage);
       setRecommendedData(
-        coinsData?.filter((coin) => !favorites.includes(coin.coin_id))
+        coinsData?.filter((coin) => !favorites.includes(coin.id))
       );
     }
   }, [coinsData]);
