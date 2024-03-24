@@ -7,7 +7,6 @@ import {
   RxChevronLeft as PreviousPageIcon,
 } from 'react-icons/rx';
 
-import { pageSizes } from '../../constants/page-sizes';
 import { Coin } from '../../types/coin-types';
 
 interface Props {
@@ -16,7 +15,7 @@ interface Props {
 
 const Pagination: FC<Props> = ({ pagination }) => {
   return (
-    <div className='flex text-base py-4 px-8 w-full justify-between'>
+    <div className='flex text-base py-4 px-8 w-full'>
       <div className='flex gap-4'>
         <button
           onClick={() => pagination.firstPage()}
@@ -25,7 +24,7 @@ const Pagination: FC<Props> = ({ pagination }) => {
             pagination.getCanPreviousPage() && 'hover:text-secondary'
           }`}
         >
-          <FirstPageIcon />
+          <FirstPageIcon className='text-md' />
         </button>
         <button
           onClick={() => pagination.previousPage()}
@@ -34,7 +33,7 @@ const Pagination: FC<Props> = ({ pagination }) => {
             pagination.getCanPreviousPage() && 'hover:text-secondary'
           }`}
         >
-          <PreviousPageIcon />
+          <PreviousPageIcon className='text-md' />
         </button>
         {[...Array(pagination.getPageCount())].map((_, index) => (
           <button
@@ -54,33 +53,16 @@ const Pagination: FC<Props> = ({ pagination }) => {
           disabled={!pagination.getCanNextPage()}
           className={`${pagination.getCanNextPage() && 'hover:text-secondary'}`}
         >
-          <NextPageIcon />
+          <NextPageIcon className='text-md' />
         </button>
         <button
           onClick={() => pagination.lastPage()}
           disabled={!pagination.getCanNextPage()}
           className={`${pagination.getCanNextPage() && 'hover:text-secondary'}`}
         >
-          <LastPageIcon />
+          <LastPageIcon className='text-md' />
         </button>
       </div>
-      <select
-        value={pagination.getState().pagination.pageSize}
-        onChange={(e) => {
-          pagination.setPageSize(Number(e.target.value));
-        }}
-        className='px-4 py-2 rounded-md bg-secondary text-base focus:outline-none hover:opacity-70 hover:cursor-pointer'
-      >
-        {pageSizes.map((pageSize) => (
-          <option
-            key={pageSize}
-            value={pageSize}
-            className='bg-secondary hover:opacity-70'
-          >
-            {pageSize}
-          </option>
-        ))}
-      </select>
     </div>
   );
 };

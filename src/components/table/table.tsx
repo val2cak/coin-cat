@@ -18,6 +18,8 @@ import FavoriteCell from '../favorite-cell/favorite-cell';
 import { formatPrice } from '../../utils/format-price';
 import Pagination from '../pagination/pagination';
 import locale from '../../localization/locale';
+import Dropdown from '../dropdown/dropdown';
+import { pageSizes } from '../../constants/page-sizes';
 
 interface Props {
   data: Coin[];
@@ -167,7 +169,16 @@ const Table: FC<Props> = ({ data }) => {
           ))}
         </tbody>
       </table>
-      <Pagination pagination={table} />
+      <div className='flex justify-between items-center'>
+        <Pagination pagination={table} />
+        <Dropdown
+          items={pageSizes}
+          onSelect={(item: number) => {
+            table.setPageSize(Number(item));
+          }}
+          selectedItem={table.getState().pagination.pageSize}
+        />
+      </div>
     </div>
   );
 };
