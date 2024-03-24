@@ -5,7 +5,7 @@ import './styles/globals.css';
 const App = () => {
   const prepareRoutes = useRoutes(Routes);
 
-  return <div className='h-screen'>{prepareRoutes}</div>;
+  return <div>{prepareRoutes}</div>;
 };
 
 export default App;

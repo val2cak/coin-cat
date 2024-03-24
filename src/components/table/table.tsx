@@ -113,7 +113,7 @@ const Table: FC<Props> = ({ data }) => {
           {table.getHeaderGroups()?.map((headerGroup) => (
             <tr
               key={headerGroup.id}
-              className='bg-primary text-light border-b border-b-light border-opacity-5'
+              className='bg-transparent text-light border-b border-b-light border-opacity-5'
             >
               {headerGroup.headers.map((header) => (
                 <th
@@ -153,7 +153,7 @@ const Table: FC<Props> = ({ data }) => {
           {table.getRowModel().rows?.map((row) => (
             <tr
               key={row.id}
-              className='bg-primary border-b border-b-light border-opacity-5'
+              className='bg-transparent border-b border-b-light border-opacity-5'
             >
               {row.getVisibleCells().map((cell) => (
                 <td
