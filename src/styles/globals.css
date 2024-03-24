@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind components;
+@tailwind base;
+@tailwind utilities;
+
+body,
+html {
+  margin: 0;
+  background-color: #1d1429 !important;
+  color: #ecf1f0;
+  font-family: 'Raleway', sans-serif !important;
+  overscroll-behavior-y: none;
+  overscroll-behavior-block: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(112, 0, 255, 0),
+    rgba(255, 0, 199, 0.1),
+    rgba(96, 255, 231, 0.05),
+    rgba(112, 0, 255, 0)
+  );
+  background-repeat: no-repeat;
+  min-height: 100dvh !important;
+}
+
+#root {
+  margin: 0 auto;
+}

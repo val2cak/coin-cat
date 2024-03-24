@@ -1,5 +1,11 @@
+import { useRoutes } from 'react-router-dom';
+import { Routes } from './routes/Routes';
+import './styles/globals.css';
+
 const App = () => {
-  return <div className='h-screen'></div>;
+  const prepareRoutes = useRoutes(Routes);
+
+  return <div>{prepareRoutes}</div>;
 };
 
 export default App;
