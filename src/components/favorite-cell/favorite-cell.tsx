@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { RootState } from '../../app/store';
 import StarButton from '../star-button/star-button';
 import { Coin } from '../../types/coin-types';
@@ -17,13 +16,13 @@ const FavoriteCell: FC<Props> = ({ item, size }) => {
   const favorites = useSelector(
     (state: RootState) => state.favorites.favorites
   );
-  const isFavorite = favorites.includes(id);
+  const isFavorite = favorites.some((coin) => coin.id === id);
 
   const handleFavorite = () => {
     if (isFavorite) {
       dispatch(removeFavorite(id));
     } else {
-      dispatch(addFavorite(id));
+      dispatch(addFavorite(item));
     }
   };
 

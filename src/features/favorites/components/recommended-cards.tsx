@@ -19,7 +19,7 @@ const RecommendedCards = () => {
   useEffect(() => {
     if (coinsData) {
       const filteredRecommended = coinsData.filter(
-        (coin) => !favorites.includes(coin.id)
+        (coin) => !favorites.some((favorite) => favorite.id === coin.id)
       );
       setRecommendedData(filteredRecommended);
     }
