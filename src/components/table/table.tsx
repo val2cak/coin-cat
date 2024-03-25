@@ -54,10 +54,10 @@ const Table: FC<Props> = ({ data }) => {
       cell: (info) => (
         <>
           {info.row.original &&
-            (info.row.original.small || info.row.original.thumb) && (
+            (info.row.original.small || info.row.original.large) && (
               <img
-                src={info.row.original.small ?? info.row.original.thumb}
-                alt={info.row.original.name}
+                src={info.row.original.small ?? info.row.original.large}
+                alt={info.row.original.symbol}
                 className='w-8 h-8'
               />
             )}
@@ -75,7 +75,11 @@ const Table: FC<Props> = ({ data }) => {
     data.some((coin) => coin.data) &&
       columnHelper.accessor('data.price', {
         header: price,
-        cell: (info) => formatPrice(info.getValue()),
+        cell: (info) => {
+          const coin = info.row.original;
+          const priceData = coin.data;
+          return priceData ? formatPrice(priceData.price) : '';
+        },
       }),
     columnHelper.accessor('market_cap_rank', {
       header: marketCapRank,
@@ -109,13 +113,13 @@ const Table: FC<Props> = ({ data }) => {
   });
 
   return (
-    <div className='overflow-x-auto border border-light border-opacity-5 rounded-md'>
+    <div className='overflow-x-auto border border-light border-opacity-10 rounded-md'>
       <table className='w-full table-auto'>
         <thead>
           {table.getHeaderGroups()?.map((headerGroup) => (
             <tr
               key={headerGroup.id}
-              className='bg-transparent text-light border-b border-b-light border-opacity-5'
+              className='bg-transparent text-light border-b border-b-light border-opacity-10'
             >
               {headerGroup.headers.map((header) => (
                 <th

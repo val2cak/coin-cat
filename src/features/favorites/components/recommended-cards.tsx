@@ -6,10 +6,13 @@ import Card from '../../../components/card/card';
 import locale from '../../../localization/locale';
 import { Coin } from '../../../types/coin-types';
 import { selectFavorites } from '../../../hooks/favorites-state';
+import LoadingCard from '../../../components/loading-elements/loading-card';
 
 const RecommendedCards = () => {
   const { recommendedHeader } = locale.favorites;
   const favorites = useSelector(selectFavorites);
+
+  const placeholderArray = [1, 2, 3, 4];
 
   const [recommendedData, setRecommendedData] = useState<Coin[]>([]);
 
@@ -19,7 +22,7 @@ const RecommendedCards = () => {
   useEffect(() => {
     if (coinsData) {
       const filteredRecommended = coinsData.filter(
-        (coin) => !favorites.includes(coin.id)
+        (coin) => !favorites.some((favorite) => favorite.id === coin.id)
       );
       setRecommendedData(filteredRecommended);
     }
@@ -30,10 +33,16 @@ const RecommendedCards = () => {
       <div className='uppercase font-bold sm:text-md text-lg'>
         {recommendedHeader}
       </div>
-      {!isCoinsDataLoading && (
+      {!isCoinsDataLoading && coinsData && coinsData.length !== 0 ? (
         <div className='flex flex-row justify-center gap-8 sm:flex-wrap'>
           {recommendedData?.slice(0, 4)?.map((item, index) => (
             <Card item={item} key={index} />
+          ))}
+        </div>
+      ) : (
+        <div className='flex flex-row justify-center gap-8 flex-wrap'>
+          {placeholderArray.map((_, index) => (
+            <LoadingCard key={index} />
           ))}
         </div>
       )}

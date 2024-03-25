@@ -4,9 +4,10 @@ import {
   getFavoritesFromStorage,
   setFavoritesToStorage,
 } from '../services/storage';
+import { Coin } from '../types/coin-types';
 
 interface FavoritesState {
-  favorites: string[];
+  favorites: Coin[];
 }
 
 const favoritesFromStorage = getFavoritesFromStorage();
@@ -19,15 +20,17 @@ export const favoritesSlice = createSlice({
   name: 'Favorites-State-Slice',
   initialState,
   reducers: {
-    addFavorite: (state, action: PayloadAction<string>) => {
+    addFavorite: (state, action: PayloadAction<Coin>) => {
       state.favorites.push(action.payload);
       setFavoritesToStorage(state.favorites);
     },
     removeFavorite: (state, action: PayloadAction<string>) => {
-      state.favorites = state.favorites.filter((id) => id !== action.payload);
+      state.favorites = state.favorites.filter(
+        (coin) => coin.id !== action.payload
+      );
       setFavoritesToStorage(state.favorites);
     },
-    setFavorites: (state, action: PayloadAction<string[]>) => {
+    setFavorites: (state, action: PayloadAction<Coin[]>) => {
       state.favorites = action.payload;
       setFavoritesToStorage(state.favorites);
     },
