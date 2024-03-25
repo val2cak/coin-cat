@@ -5,6 +5,7 @@ import { useLazyGetCoinsQuery } from '../../../hooks/coin-api';
 import Table from '../../../components/table/table';
 import locale from '../../../localization/locale';
 import SearchInput from '../../../components/search-input/search-input';
+import LoadingTable from '../../../components/loading-elements/loading-table';
 
 const MarketTable = () => {
   const { tableHeader } = locale.home;
@@ -33,8 +34,10 @@ const MarketTable = () => {
         </div>
         <SearchInput onSearch={handleSearch} />
       </div>
-      {!isCoinsDataFetching && coinsData && coinsData.length !== 0 && (
+      {!isCoinsDataFetching && coinsData && coinsData.length !== 0 ? (
         <Table data={coinsData} />
+      ) : (
+        <LoadingTable />
       )}
     </div>
   );

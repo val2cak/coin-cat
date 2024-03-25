@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Table from '../../../components/table/table';
 import locale from '../../../localization/locale';
 import { selectFavorites } from '../../../hooks/favorites-state';
+import LoadingTable from '../../../components/loading-elements/loading-table';
 
 const FavoritesTable = () => {
   const { tableHeader } = locale.favorites;
@@ -15,7 +16,11 @@ const FavoritesTable = () => {
           {tableHeader}
         </div>
       </div>
-      {favorites && favorites.length !== 0 && <Table data={favorites} />}
+      {favorites && favorites.length !== 0 ? (
+        <Table data={favorites} />
+      ) : (
+        <LoadingTable />
+      )}
     </div>
   );
 };
