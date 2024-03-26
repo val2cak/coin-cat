@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. Clone this repository to your local machine:
+   git clone https://github.com/val2cak/coin-cat.git
+
+2. Navigate to the project directory:
+   cd coin-cat
+
+3. Install dependencies using npm:
+   npm install
+
+4. Add the following environment variable to your .env.local file:
+   REACT_APP_BASE_URL=https://api.coingecko.com/api/v3/search
+
 ## Available Scripts
 
 In the project directory, you can run:
