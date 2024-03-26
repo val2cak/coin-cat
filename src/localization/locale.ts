@@ -21,6 +21,7 @@ const locale = {
     subtitle: 'Discover your ideal cryptocurrencies exclusively at CoinCat',
     button: 'Get started',
     tableHeader: 'Explore the market',
+    noDataMessage: 'No data found',
   },
   favorites: {
     tableHeader: 'Your crypto favorites',

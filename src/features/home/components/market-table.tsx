@@ -6,9 +6,10 @@ import Table from '../../../components/table/table';
 import locale from '../../../localization/locale';
 import SearchInput from '../../../components/search-input/search-input';
 import LoadingTable from '../../../components/loading-elements/loading-table';
+import NoDataTable from '../../../components/no-data-elements/no-data-table';
 
 const MarketTable = () => {
-  const { tableHeader } = locale.home;
+  const { tableHeader, noDataMessage } = locale.home;
 
   const [userInput, setUserInput] = useState<string>('');
 
@@ -34,8 +35,18 @@ const MarketTable = () => {
         </div>
         <SearchInput onSearch={handleSearch} />
       </div>
-      {!isCoinsDataFetching && coinsData && coinsData.length !== 0 ? (
-        <Table data={coinsData} />
+      {!isCoinsDataFetching ? (
+        <>
+          {coinsData && coinsData.length !== 0 ? (
+            <Table data={coinsData} />
+          ) : (
+            <NoDataTable>
+              <td className='sm:text-md text-lg font-medium text-tertiary'>
+                {noDataMessage}
+              </td>
+            </NoDataTable>
+          )}
+        </>
       ) : (
         <LoadingTable />
       )}

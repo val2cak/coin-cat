@@ -26,7 +26,7 @@ const SearchInput = ({ onSearch }) => {
         value={userInput}
         onChange={handleChange}
         placeholder='Search Coin'
-        className='bg-secondary text-light font-semibold pl-11 pr-10 py-2 rounded-md placeholder:text-light'
+        className='bg-transparent border border-light border-opacity-10 text-light font-semibold pl-11 sm:pr-9 pr-10 py-2 rounded-md placeholder:text-light'
       />
       {userInput && (
         <ClearIcon
