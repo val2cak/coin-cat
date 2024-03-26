@@ -9,7 +9,7 @@ const Logo = () => {
   return (
     <Link
       to={'/'}
-      className='flex font-bold text-md gap-2 items-center tracking-wider'
+      className='flex font-bold text-lg gap-2 items-center tracking-wider'
     >
       <img src={catIcon} alt={cat} className='w-6 h-6' />
       <div>

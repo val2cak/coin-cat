@@ -23,11 +23,11 @@ const Card: FC<Props> = ({ item }) => {
             {truncatedName}
           </span>
         </div>
-        <FavoriteCell item={item} size={'text-md'} />
+        <FavoriteCell item={item} size={'text-lg'} />
       </div>
       <div className='border border-light border-opacity-10'></div>
       <div className='p-5 2xl:py-8 flex flex-col items-start justify-between h-1/2'>
-        <span className='text-md font-medium lining-nums'>
+        <span className='text-lg font-medium lining-nums'>
           {data.price && formatPrice(data.price)}
         </span>
         <span className='text-base font-medium lining-nums'>

@@ -13,7 +13,7 @@ const Links = () => {
       {Routes?.find((item) => item.name === 'Dashboard').children?.map(
         (route, index) => (
           <Fragment key={index}>
-            <li className='uppercase text-base tracking-wider'>
+            <li className='uppercase text-md tracking-wider'>
               <NavLink
                 to={route.path}
                 className={({ isActive }) =>
@@ -23,7 +23,7 @@ const Links = () => {
                 }
               >
                 {isSmallScreen ? (
-                  <route.icon className='text-md' title={route.name} />
+                  <route.icon className='text-lg' title={route.name} />
                 ) : (
                   route.name
                 )}

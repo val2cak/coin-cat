@@ -24,7 +24,7 @@ const Pagination: FC<Props> = ({ pagination }) => {
             pagination.getCanPreviousPage() && 'hover:text-secondary'
           }`}
         >
-          <FirstPageIcon className='text-md' />
+          <FirstPageIcon className='text-lg' />
         </button>
         <button
           onClick={() => pagination.previousPage()}
@@ -33,7 +33,7 @@ const Pagination: FC<Props> = ({ pagination }) => {
             pagination.getCanPreviousPage() && 'hover:text-secondary'
           }`}
         >
-          <PreviousPageIcon className='text-md' />
+          <PreviousPageIcon className='text-lg' />
         </button>
         {[...Array(pagination.getPageCount())].map((_, index) => (
           <button
@@ -53,14 +53,14 @@ const Pagination: FC<Props> = ({ pagination }) => {
           disabled={!pagination.getCanNextPage()}
           className={`${pagination.getCanNextPage() && 'hover:text-secondary'}`}
         >
-          <NextPageIcon className='text-md' />
+          <NextPageIcon className='text-lg' />
         </button>
         <button
           onClick={() => pagination.lastPage()}
           disabled={!pagination.getCanNextPage()}
           className={`${pagination.getCanNextPage() && 'hover:text-secondary'}`}
         >
-          <LastPageIcon className='text-md' />
+          <LastPageIcon className='text-lg' />
         </button>
       </div>
     </div>

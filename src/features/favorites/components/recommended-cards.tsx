@@ -32,12 +32,12 @@ const RecommendedCards = () => {
   const isSmallScreen = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
-    <div className='flex flex-col gap-8'>
-      <div className='uppercase font-bold sm:text-md text-lg'>
+    <div className='flex flex-col sm:gap-4 gap-8'>
+      <div className='uppercase font-bold sm:text-lg text-xl'>
         {recommendedHeader}
       </div>
       {!isCoinsDataLoading && coinsData && coinsData.length !== 0 ? (
-        <div className='flex flex-row justify-center gap-8 sm:flex-wrap'>
+        <div className='flex flex-row justify-center sm:gap-4 gap-8 sm:flex-wrap'>
           {isSmallScreen ? (
             <CardsSlider data={recommendedData?.slice(0, 4)} />
           ) : (
@@ -47,7 +47,7 @@ const RecommendedCards = () => {
           )}
         </div>
       ) : (
-        <div className='flex flex-row justify-center gap-8 flex-wrap'>
+        <div className='flex flex-row justify-center sm:gap-4 gap-8 flex-wrap'>
           {isSmallScreen ? (
             <LoadingCard />
           ) : (

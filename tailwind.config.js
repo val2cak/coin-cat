@@ -55,8 +55,8 @@ module.exports = {
         lg: ['24px', { lineHeight: '2.8rem' }],
         xl: ['32px', { lineHeight: '2.8rem' }],
         '2xl': ['36px', { lineHeight: '3.2rem' }],
-        '3xl': ['40rem', { lineHeight: '3.6rem' }],
-        '4xl': ['56rem', { lineHeight: '4.0rem' }],
+        '3xl': ['40px', { lineHeight: '3.6rem' }],
+        '4xl': ['56px', { lineHeight: '4.0rem' }],
       },
       borderWidth: {
         default: '1px',

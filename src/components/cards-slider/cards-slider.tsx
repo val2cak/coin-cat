@@ -37,7 +37,7 @@ const CardsSlider: FC<Props> = ({ data }) => {
         className='w-full overflow-hidden relative flex justify-center items-center py-2'
         {...handlers}
       >
-        <div className='flex gap-8 sm:p-0 p-2 sm:w-full'>
+        <div className='flex gap-8 sm:w-full'>
           {data?.map((item, index) => {
             return (
               <div

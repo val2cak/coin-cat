@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <div className='bottom-0 h-52 sm:px-8 px-40 sm:py-12 py-16 w-full flex justify-between border-t border-t-light border-opacity-5'>
-      <div className='flex flex-col gap-6 tracking-wider justify-center'>
+      <div className='flex flex-col sm:gap-4 gap-8 sm:tracking-normal tracking-wider justify-center'>
         <Logo />
         <span className='text-tertiary'>{allRightsReserved}</span>
       </div>

@@ -89,7 +89,7 @@ const Table: FC<Props> = ({ data }) => {
       id: 'favorite',
       header: '',
       cell: (info) => (
-        <FavoriteCell item={info.row.original} size={'text-md'} />
+        <FavoriteCell item={info.row.original} size={'text-lg'} />
       ),
     },
   ].filter(Boolean);
