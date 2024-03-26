@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { useGetCoinsQuery } from '../../../hooks/coin-api';
 import Card from '../../../components/card/card';
@@ -8,6 +9,7 @@ import { Coin } from '../../../types/coin-types';
 import { selectFavorites } from '../../../hooks/favorites-state';
 import LoadingCard from '../../../components/loading-elements/loading-card';
 import { placeholderArray } from '../../../constants/placeholder-array';
+import CardsSlider from '../../../components/cards-slider/cards-slider';
 
 const RecommendedCards = () => {
   const { recommendedHeader } = locale.favorites;
@@ -27,6 +29,8 @@ const RecommendedCards = () => {
     }
   }, [coinsData, favorites]);
 
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 768px)' });
+
   return (
     <div className='flex flex-col gap-8'>
       <div className='uppercase font-bold sm:text-md text-lg'>
@@ -34,15 +38,21 @@ const RecommendedCards = () => {
       </div>
       {!isCoinsDataLoading && coinsData && coinsData.length !== 0 ? (
         <div className='flex flex-row justify-center gap-8 sm:flex-wrap'>
-          {recommendedData?.slice(0, 4)?.map((item, index) => (
-            <Card item={item} key={index} />
-          ))}
+          {isSmallScreen ? (
+            <CardsSlider data={recommendedData?.slice(0, 4)} />
+          ) : (
+            recommendedData
+              ?.slice(0, 4)
+              ?.map((item, index) => <Card item={item} key={index} />)
+          )}
         </div>
       ) : (
         <div className='flex flex-row justify-center gap-8 flex-wrap'>
-          {placeholderArray.map((_, index) => (
-            <LoadingCard key={index} />
-          ))}
+          {isSmallScreen ? (
+            <LoadingCard />
+          ) : (
+            placeholderArray.map((_, index) => <LoadingCard key={index} />)
+          )}
         </div>
       )}
     </div>

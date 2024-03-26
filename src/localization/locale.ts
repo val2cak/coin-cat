@@ -13,6 +13,8 @@ const locale = {
     logo: 'Logo',
     no: 'No',
     price: 'Price',
+    prev: 'Prev',
+    next: 'Next',
   },
   home: {
     title: 'Venture into the Cryptoverse',
