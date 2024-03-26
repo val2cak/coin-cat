@@ -1,12 +1,11 @@
 import { useGetCoinsQuery } from '../../../hooks/coin-api';
 import Card from '../../../components/card/card';
 import LoadingCard from '../../../components/loading-elements/loading-card';
+import { placeholderArray } from '../../../constants/placeholder-array';
 
 const TrendingCards = () => {
   const { data: coinsData, isLoading: isCoinsDataLoading } =
     useGetCoinsQuery('');
-
-  const placeholderArray = [1, 2, 3, 4];
 
   return (
     <>

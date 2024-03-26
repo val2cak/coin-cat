@@ -9,13 +9,13 @@ const Footer = () => {
   const { allRightsReserved, services } = locale.common;
 
   return (
-    <div className='bottom-0 h-52 sm:px-8 px-40 py-16 w-full flex justify-between border-t border-t-light border-opacity-5'>
-      <div className='flex flex-col gap-6 tracking-wider'>
+    <div className='bottom-0 h-52 sm:px-8 px-40 sm:py-12 py-16 w-full flex justify-between border-t border-t-light border-opacity-5'>
+      <div className='flex flex-col gap-6 tracking-wider justify-center'>
         <Logo />
         <span className='text-tertiary'>{allRightsReserved}</span>
       </div>
 
-      <ul className='flex flex-col gap-2'>
+      <ul className='flex flex-col gap-2 justify-center'>
         <span className='font-semibold tracking-wider text-tertiary'>
           {services}
         </span>

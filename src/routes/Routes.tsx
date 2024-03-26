@@ -1,4 +1,8 @@
 import { Outlet } from 'react-router-dom';
+import {
+  IoHomeSharp as HomeIcon,
+  IoStar as FavoritesIcon,
+} from 'react-icons/io5';
 
 import { CustomRouteObject } from '../types/general-types';
 import HomeContainer from '../features/home/home-container';
@@ -14,11 +18,13 @@ export let Routes: CustomRouteObject[] = [
       {
         path: '/',
         name: 'Home',
+        icon: HomeIcon,
         element: <HomeContainer />,
       },
       {
         path: '/favorites',
         name: 'Favorites',
+        icon: FavoritesIcon,
         element: <FavoritesContainer />,
       },
     ],

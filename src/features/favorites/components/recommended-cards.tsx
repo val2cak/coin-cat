@@ -7,12 +7,11 @@ import locale from '../../../localization/locale';
 import { Coin } from '../../../types/coin-types';
 import { selectFavorites } from '../../../hooks/favorites-state';
 import LoadingCard from '../../../components/loading-elements/loading-card';
+import { placeholderArray } from '../../../constants/placeholder-array';
 
 const RecommendedCards = () => {
   const { recommendedHeader } = locale.favorites;
   const favorites = useSelector(selectFavorites);
-
-  const placeholderArray = [1, 2, 3, 4];
 
   const [recommendedData, setRecommendedData] = useState<Coin[]>([]);
 

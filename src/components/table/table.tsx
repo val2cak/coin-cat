@@ -138,7 +138,7 @@ const Table: FC<Props> = ({ data }) => {
                       : undefined
                   }
                 >
-                  <div className='flex items-center gap-2'>
+                  <div className='flex sm:whitespace-pre items-center gap-2'>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -173,7 +173,7 @@ const Table: FC<Props> = ({ data }) => {
           ))}
         </tbody>
       </table>
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-center w-full'>
         <Pagination pagination={table} />
         <Dropdown
           items={pageSizes}

@@ -13,12 +13,12 @@ const NotFoundContainer = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center gap-8 h-full'>
+    <div className='flex flex-col justify-center items-center gap-8 h-full min-h-screen'>
       <div className='flex flex-col gap-2 items-center'>
         <div className='scale-150 pb-4'>
           <Logo />
         </div>
-        <span className='text-xl uppercase font-bold'>{title}</span>
+        <span className='sm:text-lg text-2xl uppercase font-bold'>{title}</span>
         <span className='text-base font-medium text-tertiary'>{subtitle}</span>
       </div>
       <Button text={button} handleOnClick={navigateToHome} />
