@@ -15,7 +15,7 @@ interface Props {
 
 const Pagination: FC<Props> = ({ pagination }) => {
   return (
-    <div className='flex text-base py-4 px-8 w-full'>
+    <div className='flex text-base py-4 sm:pl-8 sm:px-4 px-8 w-full'>
       <div className='flex gap-4'>
         <button
           onClick={() => pagination.firstPage()}
@@ -24,7 +24,7 @@ const Pagination: FC<Props> = ({ pagination }) => {
             pagination.getCanPreviousPage() && 'hover:text-secondary'
           }`}
         >
-          <FirstPageIcon className='text-md' />
+          <FirstPageIcon className='sm:text-md text-lg' />
         </button>
         <button
           onClick={() => pagination.previousPage()}
@@ -33,7 +33,7 @@ const Pagination: FC<Props> = ({ pagination }) => {
             pagination.getCanPreviousPage() && 'hover:text-secondary'
           }`}
         >
-          <PreviousPageIcon className='text-md' />
+          <PreviousPageIcon className='sm:text-md text-lg' />
         </button>
         {[...Array(pagination.getPageCount())].map((_, index) => (
           <button
@@ -53,14 +53,14 @@ const Pagination: FC<Props> = ({ pagination }) => {
           disabled={!pagination.getCanNextPage()}
           className={`${pagination.getCanNextPage() && 'hover:text-secondary'}`}
         >
-          <NextPageIcon className='text-md' />
+          <NextPageIcon className='sm:text-md text-lg' />
         </button>
         <button
           onClick={() => pagination.lastPage()}
           disabled={!pagination.getCanNextPage()}
           className={`${pagination.getCanNextPage() && 'hover:text-secondary'}`}
         >
-          <LastPageIcon className='text-md' />
+          <LastPageIcon className='sm:text-md text-lg' />
         </button>
       </div>
     </div>

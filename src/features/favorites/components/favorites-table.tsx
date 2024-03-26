@@ -10,9 +10,9 @@ const FavoritesTable = () => {
   const favorites = useSelector(selectFavorites);
 
   return (
-    <div className='flex flex-col gap-8 pt-8'>
+    <div className='flex flex-col sm:gap-4 gap-8 sm:pt-4 pt-8'>
       <div className='flex justify-between items-center sm:flex-col sm:items-start gap-4'>
-        <div className='uppercase font-bold sm:text-md text-lg'>
+        <div className='uppercase font-bold sm:text-lg text-xl'>
           {tableHeader}
         </div>
       </div>

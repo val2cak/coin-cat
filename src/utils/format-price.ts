@@ -1,11 +1,23 @@
-export const formatPrice = (price: string) => {
-  const regex = /\$\d+(\.\d+)?/;
+export const formatPrice = (price: string | number) => {
+  const priceString = typeof price === 'number' ? price.toString() : price;
 
-  const extractedPrice = price.match(regex);
+  if (priceString.includes('<sub')) {
+    const formattedPriceString = priceString.replace(
+      /<sub[^>]*>.*?<\/sub>/g,
+      ''
+    );
 
-  if (extractedPrice) {
-    return extractedPrice[0];
+    if (formattedPriceString.trim() === '') {
+      return '$0';
+    }
+
+    return formattedPriceString;
   }
 
-  return price;
+  if (priceString.startsWith('$')) {
+    return priceString;
+  }
+
+  const formattedPrice = parseFloat(priceString).toFixed(5);
+  return `$${formattedPrice}`;
 };

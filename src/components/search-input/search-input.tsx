@@ -20,7 +20,7 @@ const SearchInput = ({ onSearch }) => {
 
   return (
     <div className='relative'>
-      <SearchIcon className='absolute left-3 top-1/2 transform -translate-y-1/2 text-light text-md' />
+      <SearchIcon className='absolute left-3 top-1/2 transform -translate-y-1/2 text-light text-lg' />
       <input
         type='text'
         value={userInput}
@@ -30,7 +30,7 @@ const SearchInput = ({ onSearch }) => {
       />
       {userInput && (
         <ClearIcon
-          className='absolute top-1/2 right-3 transform -translate-y-1/2 text-light cursor-pointer text-md'
+          className='absolute top-1/2 right-3 transform -translate-y-1/2 text-light cursor-pointer text-lg'
           onClick={handleClear}
         />
       )}

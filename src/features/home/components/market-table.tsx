@@ -27,9 +27,9 @@ const MarketTable = () => {
   };
 
   return (
-    <div id='market-table' className='flex flex-col gap-8'>
+    <div id='market-table' className='flex flex-col sm:gap-4 gap-8'>
       <div className='flex justify-between items-center sm:flex-col sm:items-start gap-4'>
-        <div className='uppercase font-bold sm:text-md text-lg'>
+        <div className='uppercase font-bold sm:text-lg text-xl'>
           {tableHeader}
         </div>
         <SearchInput onSearch={handleSearch} />

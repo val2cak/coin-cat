@@ -15,7 +15,7 @@ const Card: FC<Props> = ({ item }) => {
 
   return (
     <div className='rounded-xl border border-light border-opacity-10 bg-transparent flex-1'>
-      <div className='p-5 flex items-center justify-between h-1/2'>
+      <div className='p-5 2xl:py-8 flex items-center justify-between h-1/2'>
         <div className='flex items-center gap-3'>
           <img src={small ?? large} alt={name} className='w-12 h-12' />
           <span className='font-semibold text-base'>{symbol}</span>
@@ -23,11 +23,11 @@ const Card: FC<Props> = ({ item }) => {
             {truncatedName}
           </span>
         </div>
-        <FavoriteCell item={item} size={'text-md'} />
+        <FavoriteCell item={item} size={'text-lg'} />
       </div>
       <div className='border border-light border-opacity-10'></div>
-      <div className='p-5 flex flex-col items-start justify-between h-1/2'>
-        <span className='text-md font-medium lining-nums'>
+      <div className='p-5 2xl:py-8 flex flex-col items-start justify-between h-1/2'>
+        <span className='text-lg font-medium lining-nums'>
           {data.price && formatPrice(data.price)}
         </span>
         <span className='text-base font-medium lining-nums'>

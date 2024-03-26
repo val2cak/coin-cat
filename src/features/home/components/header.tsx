@@ -12,10 +12,12 @@ const Header = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center gap-8 pt-24'>
+    <div className='flex flex-col justify-center items-center gap-8 sm:pt-16 pt-24'>
       <div className='flex flex-col gap-2 items-center'>
-        <span className='sm:text-lg text-xl uppercase font-bold'>{title}</span>
-        <span className='sm:text-sm text-base font-medium text-tertiary'>
+        <span className='sm:text-lg text-3xl 2xl:text-4xl uppercase font-bold'>
+          {title}
+        </span>
+        <span className='sm:text-base text-md 2xl:text-lg font-medium text-tertiary'>
           {subtitle}
         </span>
       </div>

@@ -13,10 +13,12 @@ const locale = {
     logo: 'Logo',
     no: 'No',
     price: 'Price',
+    prev: 'Prev',
+    next: 'Next',
   },
   home: {
     title: 'Venture into the Cryptoverse',
-    subtitle: 'Discover Your Ideal Cryptocurrencies Exclusively at CoinCat',
+    subtitle: 'Discover your ideal cryptocurrencies exclusively at CoinCat',
     button: 'Get started',
     tableHeader: 'Explore the market',
   },
