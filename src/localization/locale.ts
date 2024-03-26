@@ -25,6 +25,8 @@ const locale = {
   favorites: {
     tableHeader: 'Your crypto favorites',
     recommendedHeader: 'Recommended for you',
+    findFavoritesButton: 'Find items',
+    noDataMessage: 'You have not added any favorites yet',
   },
   pageNotFound: {
     title: 'Page not found',
