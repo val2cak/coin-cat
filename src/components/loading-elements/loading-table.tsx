@@ -9,7 +9,7 @@ const LoadingTable = () => {
         </thead>
         <tbody>
           <tr className='bg-transparent border-b border-b-light border-opacity-5'>
-            <div className='dot-spinner'>
+            <td className='dot-spinner'>
               <div className='dot-spinner__dot'></div>
               <div className='dot-spinner__dot'></div>
               <div className='dot-spinner__dot'></div>
@@ -18,7 +18,7 @@ const LoadingTable = () => {
               <div className='dot-spinner__dot'></div>
               <div className='dot-spinner__dot'></div>
               <div className='dot-spinner__dot'></div>
-            </div>
+            </td>
           </tr>
         </tbody>
       </table>
