@@ -31,7 +31,7 @@ const Dropdown: FC<Props> = ({ items, onSelect, selectedItem }) => {
   }, [ref]);
 
   return (
-    <div ref={ref} className='px-8'>
+    <div ref={ref} className='sm:px-4 px-8'>
       <div className={`p-2 rounded-md bg-secondary w-20 hover:opacity-70`}>
         <div
           onClick={() => setOpen(!open)}
