@@ -31,34 +31,48 @@ const Dropdown: FC<Props> = ({ items, onSelect, selectedItem }) => {
   }, [ref]);
 
   return (
-    <div ref={ref} className='sm:px-4 px-8'>
-      <div className={`p-2 rounded-md bg-secondary w-20 hover:opacity-70`}>
-        <div
-          onClick={() => setOpen(!open)}
-          className='flex items-center justify-between hover:cursor-pointer font-semibold pl-3'
+    <div
+      ref={ref}
+      className='w-20 pb-0 relative border-none rounded-md bg-secondary'
+    >
+      <div
+        onClick={() => setOpen(!open)}
+        className={
+          'flex items-center justify-between gap-2 hover:cursor-pointer font-semibold pl-4 pr-2 py-2 w-20'
+        }
+      >
+        <p
+          className={`${
+            selectedItem ? 'opacity-100' : 'opacity-70'
+          } text-light lining-nums`}
         >
-          <p className='text-light lining-nums'>{selectedItem}</p>
-          <DropdownIcon className={`${open && 'rotate-180'} text-light`} />
-        </div>
+          {selectedItem}
+        </p>
+
+        <DropdownIcon
+          className={`${open && 'rotate-180'} text-md text-light`}
+        />
       </div>
 
-      {open && (
-        <div className='absolute mt-1 bg-secondary rounded-md overflow-hidden shadow-md'>
-          {items?.map((item) => (
-            <div
-              key={item}
-              onClick={() => handleSelect(item)}
-              className={`${
-                selectedItem === item
-                  ? 'bg-light text-primary bg-opacity-70'
-                  : 'hover:bg-light hover:bg-opacity-40 hover:cursor-pointer'
-              } py-1.5 px-6 first:rounded-t-md last:rounded-b-md font-semibold w-20 lining-nums`}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      )}
+      <div
+        className={`${
+          open ? 'block' : 'hidden'
+        } absolute bg-secondary rounded-md z-10 hover:cursor-pointer mt-[-14rem] left-0 w-20`}
+      >
+        {items?.map((item) => (
+          <div
+            key={item}
+            onClick={() => handleSelect(item)}
+            className={`${
+              selectedItem === item
+                ? 'bg-light text-primary bg-opacity-70'
+                : 'hover:bg-light hover:bg-opacity-40 hover:text-primary hover:cursor-pointer'
+            } pl-4 py-1.5 px-2 first:rounded-t-md last:rounded-b-md font-semibold lining-nums w-20`}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
