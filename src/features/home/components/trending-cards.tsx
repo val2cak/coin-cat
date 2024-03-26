@@ -15,7 +15,7 @@ const TrendingCards = () => {
   return (
     <>
       {!isCoinsDataLoading && coinsData && coinsData.length !== 0 ? (
-        <div className='flex flex-row justify-center gap-8 flex-wrap sm:flex-nowrap overflow-x-auto overflow-y-hidden'>
+        <div className='flex flex-row justify-center sm:gap-4 lg:gap-4 gap-8 flex-wrap sm:flex-nowrap overflow-x-auto overflow-y-hidden'>
           {isSmallScreen ? (
             <CardsSlider data={coinsData?.slice(0, 4)} />
           ) : (

@@ -37,13 +37,15 @@ const RecommendedCards = () => {
         {recommendedHeader}
       </div>
       {!isCoinsDataLoading && coinsData && coinsData.length !== 0 ? (
-        <div className='flex flex-row justify-center sm:gap-4 gap-8 sm:flex-wrap'>
+        <div className='w-full flex flex-row justify-start sm:gap-4 lg:gap-4 gap-8 sm:flex-wrap'>
           {isSmallScreen ? (
             <CardsSlider data={recommendedData?.slice(0, 4)} />
           ) : (
-            recommendedData
-              ?.slice(0, 4)
-              ?.map((item, index) => <Card item={item} key={index} />)
+            recommendedData?.slice(0, 4)?.map((item, index) => (
+              <div key={index} className='sm:w-full w-1/4'>
+                <Card item={item} />
+              </div>
+            ))
           )}
         </div>
       ) : (

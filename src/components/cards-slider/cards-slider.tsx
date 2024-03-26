@@ -19,11 +19,15 @@ const CardsSlider: FC<Props> = ({ data }) => {
   const { prev, next } = locale.common;
 
   const nextCard = () => {
-    setCurrentCardIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
+    setCurrentCardIndex((prevIndex) =>
+      prevIndex === data.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const prevCard = () => {
-    setCurrentCardIndex((prevIndex) => (prevIndex === 0 ? 3 : prevIndex - 1));
+    setCurrentCardIndex((prevIndex) =>
+      prevIndex === 0 ? data.length - 1 : prevIndex - 1
+    );
   };
 
   const handlers = useSwipeable({
@@ -52,20 +56,22 @@ const CardsSlider: FC<Props> = ({ data }) => {
           })}
         </div>
       </div>
-      <div className='flex justify-between'>
-        <button
-          onClick={prevCard}
-          className='text-md uppercase font-semibold text-tertiary hover:text-secondary flex items-center'
-        >
-          <PreviousIcon /> {prev}
-        </button>
-        <button
-          onClick={nextCard}
-          className='text-md uppercase font-semibold text-tertiary hover:text-secondary flex items-center'
-        >
-          {next} <NextIcon />
-        </button>
-      </div>
+      {data.length > 1 && (
+        <div className='flex justify-between'>
+          <button
+            onClick={prevCard}
+            className='text-md uppercase font-semibold text-tertiary hover:text-secondary flex items-center'
+          >
+            <PreviousIcon /> {prev}
+          </button>
+          <button
+            onClick={nextCard}
+            className='text-md uppercase font-semibold text-tertiary hover:text-secondary flex items-center'
+          >
+            {next} <NextIcon />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
