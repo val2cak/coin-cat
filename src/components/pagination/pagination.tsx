@@ -15,8 +15,8 @@ interface Props {
 
 const Pagination: FC<Props> = ({ pagination }) => {
   return (
-    <div className='flex text-base py-4 sm:pl-8 sm:px-4 px-8 w-full'>
-      <div className='flex gap-4'>
+    <div className='flex text-base py-4 w-full'>
+      <div className='flex sm:gap-2 gap-4'>
         <button
           onClick={() => pagination.firstPage()}
           disabled={!pagination.getCanPreviousPage()}

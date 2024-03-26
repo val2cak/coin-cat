@@ -173,7 +173,7 @@ const Table: FC<Props> = ({ data }) => {
           ))}
         </tbody>
       </table>
-      <div className='flex justify-between items-center w-full'>
+      <div className='flex justify-between items-center gap-8 sm:w-fit sm:pl-8 sm:px-4 px-8'>
         <Pagination pagination={table} />
         <Dropdown
           items={pageSizes}
